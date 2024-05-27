@@ -1,0 +1,17 @@
+.location__btn{
+    display: flex;
+    align-items: center;
+    background: transparent;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.location__arrow{
+    width: 25px;
+    color: var(--btn-bg);
+    margin-left: 65px;
+}
+.location__img{
+    width: 250px;
+    margin-bottom: 10px;
+}

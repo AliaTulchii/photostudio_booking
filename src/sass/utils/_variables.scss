@@ -1,0 +1,72 @@
+:root {
+        // Fonts
+        --title-font: 'Playfair Display', sans-serif;
+        --primary-font: 'Roboto', sans-serif;
+
+        // Colors
+        --primary-text: #ffffff;
+        --secondary-text: #131313; 
+        --additional-text: #7a7a7a;
+
+        --accent: #8e705d;
+
+        --primary-bg: #f5f5eb;
+        
+
+       
+
+        --btn-bg: #b3907a;
+        --btn-bg-hover: #977c6c;
+        --btn-bg-disabled: #ABABAB;
+
+        --dividing-line: #E1E1E1;
+
+        
+
+
+        // Gradients
+        --input-bg: rgba(248, 210, 78, 0.1);
+
+        --first-prod-gr: linear-gradient(0deg, #2bdbdb, #2bdbdb),
+                #D9D9D9;
+        --second-prod-gr: (0deg, rgba(248, 210, 78, 0.7), rgba(248, 210, 78, 0.7)),
+                #D9D9D9;
+        --third-prod-gr: (0deg, rgba(213, 117, 63, 0.7), rgba(213, 117, 63, 0.7)),
+                #D9D9D9;
+        --about-gr: linear-gradient(0deg, rgba(248, 210, 78, 0.7), rgba(248, 210, 78, 0.7)),
+                #D9D9D9;
+        --overlay-gr: rgba(0, 0, 0, .5);
+
+        // Contacts-bg
+        --c-bg-mob: linear-gradient(to bottom,
+                        rgba(132, 161, 120, 0) 24%,
+                        #2bdbdb 24%,
+                        #2bdbdb 70%);
+        
+
+
+        //Container
+        --container-padding: 40px;
+        --container-width:390px;
+        // Borders
+
+        --input-bd: 1px solid #2bdbdb;
+        --mdl-box-bd: 2px solid #2bdbdb;
+
+        // Shadows
+
+        --btn-shadow: 0px 6px 8px rgba(0, 0, 0, 0.18);
+}
+
+// breake points
+$mobile: 390px;
+$tablet: 768px;
+$desktop: 1200px;
+
+// transition
+
+$trns: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$trns-hover: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$trns-brd: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$trns-bgc: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$trns-trnsf: transform 250ms cubic-bezier(0.4, 0, 0.2, 1)
