@@ -35,7 +35,7 @@ const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, sh
       }}
       style={{ x }}
       onDragEnd={() => {
-        if (x.get() >= 100) {
+        if (x.get() >= 150) {
           onBackdropClick()
         }
       }}

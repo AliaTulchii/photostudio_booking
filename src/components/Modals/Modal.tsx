@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({ onBackdropClick,isOpen, children }) => {
       }}
       style={{ x }}
       onDragEnd={() => {
-        if (x.get() >= 10) {
+        if (x.get() >= 150) {
           onBackdropClick()
         }}
       }
