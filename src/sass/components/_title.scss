@@ -3,7 +3,17 @@
 font-style: normal;
 font-weight: 600;
 font-size: 22px;
-line-height: 23px;
+line-height: 1.05;
+text-align: left;
+color: var(--accent);
+}
+
+.subtitle{
+    font-family: var(--title-font);
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 1.44;
 text-align: left;
 color: var(--accent);
 }

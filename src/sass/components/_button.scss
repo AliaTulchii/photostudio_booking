@@ -1,19 +1,36 @@
 .btn{
-    width: 311px;
+    width: 300px;
     border-radius: 4px;
     padding: 16px 90px; 
-background: var(--btn-bg);
+    background: transparent;
+
 font-family: var(--primary-font);
 font-style: normal;
 font-weight: 500;
-font-size: 14px;
+font-size: 12px;
 line-height: 16px;
 text-align: center;
-color: var(--primary-text);
+
 
 box-shadow: var(--btn-shadow);
 
-&:hover, :focus{
-    background: var(--btn-bg-hover);
 }
+
+.btn__booking{
+    background: var(--btn-bg);
+    color: var(--primary-text);
+
+
+    &:hover, :focus{
+        background: var(--btn-bg-hover);
+    }
+}
+
+.btn__modal{
+
+background: transparent;
+border: none;
+border-radius: 0;
+// border-bottom: solid 1px var(--accent);
+text-decoration: underline;
 }

@@ -1,0 +1,50 @@
+.modal__overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.modal__container{
+    max-width: 380px; /* Змініть ширину на ваш смак */
+    max-height: 100%; /* Змініть висоту на ваш смак */
+    background-color: var(--primary-bg); /* Змініть колір на ваш смак */
+    padding: 20px; /* Змініть відступи на ваш смак */
+    overflow-y: auto; /* Додайте прокрутку при необхідності */
+}
+
+.modal__title, .modal__subtitle{
+    margin-bottom: 14px;
+}
+
+
+.modal__list, .modal__sublist{
+    display: flex;
+    flex-direction: column;
+gap: 24px;
+}
+
+
+.modal__text{
+    font-family: var(--primary-font);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.14;
+    text-align: justified;
+    color: var(--modal-text);
+
+    &--accent{
+        margin-right: 10px;
+        font-family: var(--title-font);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.19;
+        color: var(--accent);
+    }
+}

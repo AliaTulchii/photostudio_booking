@@ -16,11 +16,17 @@ gap: 12px;
 }
 
 .start__location{
+    margin-bottom: 40px;
     display: flex;
-    border-bottom: solid 1px var(--btn-bg);
-
+    border-bottom: solid 1px var(--location-line);
 }
 
 .start__subtitle{
 margin-right: 86px;
+}
+
+.start__modals{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
