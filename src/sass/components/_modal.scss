@@ -12,11 +12,11 @@
 }
 
 .modal__container{
-    max-width: 380px; /* Змініть ширину на ваш смак */
-    max-height: 100%; /* Змініть висоту на ваш смак */
+    max-width: 380px; 
+    max-height: 100%; 
     background-color: var(--primary-bg); /* Змініть колір на ваш смак */
-    padding: 20px; /* Змініть відступи на ваш смак */
-    overflow-y: auto; /* Додайте прокрутку при необхідності */
+    padding: 20px;
+    overflow-y: auto; 
 }
 
 .modal__title, .modal__subtitle{

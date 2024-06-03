@@ -1,0 +1,33 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: center;
+}
+
+.feedback__formbox{
+    width: 90%;
+}
+
+.form__inputs{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input{
+    height: 40px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid var(--form-placeholder);
+    
+}
+
+.form__input::placeholder{
+    color: var(--form-placeholder);
+}
+
+.form__name{
+    margin-bottom: 40px;
+}
+

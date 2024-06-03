@@ -1,9 +1,9 @@
 import React from 'react';
 import Modal from './Modal';
-import Rules from './Modal/Rules';
-import PublicOffer from './Modal/PublicOffer';
+import Rules from './Rules';
+import PublicOffer from './PublicOffer';
 import { motion, useDragControls, useMotionValue } from 'framer-motion'; 
-import { transition1 } from '../../transitions/transitions';
+import { transition1 } from '../../../transitions/transitions';
 
 interface BaseModalWrapperProps {
   showModalRules: boolean;
@@ -12,7 +12,7 @@ interface BaseModalWrapperProps {
   isOpen: boolean;
 }
 
-const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, showModalRules, showModalOffer, isOpen }) => {
+const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, showModalRules, showModalOffer}) => {
   
   const controls = useDragControls()
   const x = useMotionValue(0)
@@ -39,9 +39,6 @@ const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, sh
           onBackdropClick()
         }
       }}
-      // initial={{ opacity: 0, y: '100vh' }}
-      // animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : '100vh' }}
-      // transition={{ duration: 0.4 }}
     >
       {showModalRules && (
         <Modal isOpen={showModalRules} onBackdropClick={onBackdropClick}>

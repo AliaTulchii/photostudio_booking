@@ -4,9 +4,10 @@ type Btn = {
   text: string;
   onClick: () => void;
   className: string;
+  type: string;
 }
 
-const Button = ({ text,  onClick, className }: Btn) => {
+const Button = ({ text,  onClick, className, type}: Btn) => {
 
   return (
       <button  type='button' className={className} onClick={onClick}>      

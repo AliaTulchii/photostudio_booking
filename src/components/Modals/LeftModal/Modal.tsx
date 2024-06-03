@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { motion, useDragControls, useMotionValue } from 'framer-motion'; 
-import { transition1 } from '../../transitions/transitions';
+import { transition1 } from '../../../transitions/transitions';
 interface ModalProps {
   onBackdropClick: () => void;
   isOpen: boolean;
   children: any;
 }
 
-const Modal: React.FC<ModalProps> = ({ onBackdropClick,isOpen, children }) => {
+const Modal: React.FC<ModalProps> = ({ onBackdropClick ,isOpen, children }) => {
   const controls = useDragControls()
   const x = useMotionValue(0)
 
