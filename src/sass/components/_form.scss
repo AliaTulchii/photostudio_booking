@@ -23,11 +23,23 @@
     
 }
 
+.form__input:hover,
+.form__input:focus{
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--accent);
+}
+
 .form__input::placeholder{
     color: var(--form-placeholder);
 }
 
 .form__name{
     margin-bottom: 40px;
+}
+
+.form__textarea{
+    resize: none;
 }
 

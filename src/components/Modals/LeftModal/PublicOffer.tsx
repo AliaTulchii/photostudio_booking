@@ -1,6 +1,5 @@
-import React from 'react'
-import '../../../sass/components/_modal.scss'
 import '../../../sass/components/_title.scss'
+import '../../../sass/components/_leftmodal.scss'
 
 const PublicOffer = () => {
   return (

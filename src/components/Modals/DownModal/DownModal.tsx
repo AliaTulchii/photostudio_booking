@@ -12,7 +12,7 @@ const Feedback: React.FC<FeedbackProps> = ({showFeedback, openModalFeedback, clo
    
   
     return (
-        <div className='container'>
+        <div className='feedbackmodal__container container'>
             <AnimatePresence>
                  {showFeedback && <motion.div
               initial={{ opacity: 0 }}

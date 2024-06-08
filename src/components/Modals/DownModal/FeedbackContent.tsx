@@ -9,16 +9,23 @@ interface FeedbackContentProps {
 }
 
 const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
-    const [name, setName] = useState("");
+    const [form, setName] = useState({
+        name: '',
+        feedback: '',
+    });
     
     const onChange = (e: any) => {
-        const {value} = e.target
+        const {value, name, feedback} = e.target
 
-        setName(value)
+        setName((state) => ({
+            ...state,
+            [name]: value,
+            [feedback]: feedback,
+        }))
     }
 
     const showData = () => {
-        console.log("name:", name)
+        console.log("Form:", form)
     }
 
   return (
@@ -26,23 +33,25 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
       onClick={(e) => e.stopPropagation()}
       initial={{ y: "100%" }}
       animate={{ y: "0%" }}
-      className="feedback__content"
+      className="feedback__content container"
     >
       <button className="feedback__btn" onClick={closeModal}>
       <IoClose className="feedback__close"/>
       </button>
       <div className="feedback__formbox">
-        <form action="" className="form">
+        <form  action="" className="form">
           <div className="form__inputs">
             <input
                           name="name"
-                          value={name}
+                          value={form.name}
                           onChange={onChange}
               placeholder="Ваше ім’я"
               className="form__input form__name"
             />
-            <input
-              type="textarea"
+            <textarea
+                          name="feedback"
+                          value={form.feedback}
+                          onChange={onChange}
               placeholder="Ваш відгук"
               className="form__input form__textarea"
             />

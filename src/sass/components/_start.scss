@@ -1,5 +1,5 @@
 .start{
-    margin: 60px 0;
+    margin: 60px auto;
 }
 
 .start__title{
@@ -25,8 +25,13 @@ gap: 12px;
 margin-right: 86px;
 }
 
-.start__modals{
+.start__leftmodals{
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-bottom: 102px;
+}
+
+.start__downmodal{
+    // margin-top: auto;
 }

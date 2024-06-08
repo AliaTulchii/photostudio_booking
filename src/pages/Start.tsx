@@ -2,22 +2,17 @@ import { useState }from 'react'
 import '../sass/components/_start.scss'
 import Button from '../components/Button/Button'
 import Location from '../components/Location/Location'
-import BaseModalWrapper from '../components/Modals/LeftModal/BaseModalWrapper'
-// import FeedbackWraper from '../components/Modals/DownModal/Feedback'
-import FeedbackModal from '../components/Modals/DownModal/FeedbackModal'
+import LeftModal from '../components/Modals/LeftModal/LeftModal'
+import DownModal from '../components/Modals/DownModal/DownModal'
 
 
 
-const Start = () => {
-    
+const Start= () => {
     const [showModalRules, setShowModalRules] = useState(false)
   const [showModalOffer, setShowModalOffer] = useState(false)
   const [showFeedback, setShowFeedback] = useState(false)
   // const [showBooked, setShowBooked] = useState(false)
-  
 
-
-  
     const openModalRules = () => {
         setShowModalRules(true);
       };
@@ -67,15 +62,15 @@ const Start = () => {
               <Location/>
           </div>
 
-          <div className='start__modals'>
-              <Button type='button'  className={'btn__modal title'} text={'Правила студії'} onClick={openModalRules}/>
+        <div className='start__leftmodals'>
+        <Button type='button'  className={'btn__modal title'} text={'Правила студії'} onClick={openModalRules}/>
               <Button type='button' className={'btn__modal title'} text={'Договір публічної оферти'} onClick={openModalOffer}/>
-                <BaseModalWrapper isOpen={showModalRules || showModalOffer} showModalRules={showModalRules} showModalOffer= {showModalOffer} onBackdropClick={() => closeModal()}/>
+          <LeftModal isOpen={showModalRules || showModalOffer} showModalRules={showModalRules} showModalOffer= {showModalOffer} onBackdropClick={() => closeModal()}/>
           </div>
           
-        <div>
-          <Button type='button' className={'btn btn__feedback'} text={'Завантажити ще'} onClick={ openModalFeedback } />
-          <FeedbackModal showFeedback={showFeedback} openModalFeedback={openModalFeedback} closeModal={closeModal} />
+        <div className='start__downmodal'>
+          <Button type='button' className={'btn btn__feedback'} text={'Залишити відгук'} onClick={ openModalFeedback } />
+          <DownModal showFeedback={showFeedback} openModalFeedback={openModalFeedback} closeModal={closeModal} />
         </div>
         
         </div>
