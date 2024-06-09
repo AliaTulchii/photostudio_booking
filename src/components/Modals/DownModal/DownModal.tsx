@@ -1,5 +1,5 @@
 import React from 'react'
-import { AnimatePresence, motion, useDragControls, useMotionValue } from 'framer-motion'; 
+import { AnimatePresence, motion } from 'framer-motion'; 
 import FeedbackContent from './FeedbackContent';
 
 interface FeedbackProps  {
@@ -8,7 +8,7 @@ interface FeedbackProps  {
     closeModal: () => void;
 }
 
-const Feedback: React.FC<FeedbackProps> = ({showFeedback, openModalFeedback, closeModal}) => {
+const Feedback: React.FC<FeedbackProps> = ({showFeedback,  closeModal}) => {
    
   
     return (
