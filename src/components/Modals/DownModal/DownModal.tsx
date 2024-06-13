@@ -1,18 +1,21 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'; 
-import FeedbackContent from './FeedbackContent';
+// import FeedbackContent from '../../Feedback/FeedbackContent';
 
 interface FeedbackProps  {
     showFeedback: boolean;
-    openModalFeedback: () => void;
-    closeModal: () => void;
+    openModal: () => void;
+  closeModal: () => void;
+  children: any;
+  selectedData: any;
+  selectedSlot: any;
 }
 
-const Feedback: React.FC<FeedbackProps> = ({showFeedback,  closeModal}) => {
+const Feedback: React.FC<FeedbackProps> = ({openModal, showFeedback,  closeModal , children, selectedData, selectedSlot}) => {
    
   
     return (
-        <div className='feedbackmodal__container container'>
+        <div className=' container'>
             <AnimatePresence>
                  {showFeedback && <motion.div
               initial={{ opacity: 0 }}
@@ -20,7 +23,7 @@ const Feedback: React.FC<FeedbackProps> = ({showFeedback,  closeModal}) => {
               onClick={closeModal}
               
           className='feedback__container'
-          ><FeedbackContent closeModal={closeModal} /></motion.div>}
+          >{children}</motion.div>}
             </AnimatePresence>
          
     </div>

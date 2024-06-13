@@ -1,8 +1,8 @@
 import { motion,useDragControls, useMotionValue } from 'framer-motion';
 import React from 'react'
-import Rules from './Rules';
+import Rules from '../../RulesOffers/Rules';
 import { transition1 } from '../../../transitions/transitions';
-import PublicOffer from './PublicOffer';
+import PublicOffer from '../../RulesOffers/PublicOffer';
 import '../../../sass/components/_modal.scss'
 
 

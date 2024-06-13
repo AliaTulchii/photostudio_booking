@@ -8,18 +8,21 @@
         --secondary-text: #131313; 
         --additional-text: #7a7a7a;
         --modal-text: #000000;
+        --gray-text: #555555;
 
         --accent: #8e705d;
         --location-line: #E1DACA;
         --feedback: #EFE7DC;
         --primary-bg: #f5f5eb;
         --form-placeholder: #e1daca;
+        --line-gray:#A7A7A7;
        
 
         --btn-bg: #b3907a;
         --btn-bg-hover: #977c6c;
         --btn-bg-disabled: #ABABAB;
         --btn-close: #868686;
+        --btn-border: #C2B5A4;
 
         // Gradients
         --input-bg: rgba(248, 210, 78, 0.1);
@@ -34,21 +37,10 @@
                 #D9D9D9;
         --overlay-gr: rgba(0, 0, 0, .5);
 
-        // Contacts-bg
-        --c-bg-mob: linear-gradient(to bottom,
-                        rgba(132, 161, 120, 0) 24%,
-                        #2bdbdb 24%,
-                        #2bdbdb 70%);
-        
-
 
         //Container
         --container-padding: 40px;
         --container-width:380px;
-        // Borders
-
-        --input-bd: 1px solid #2bdbdb;
-        --mdl-box-bd: 2px solid #2bdbdb;
 
         // Shadows
 

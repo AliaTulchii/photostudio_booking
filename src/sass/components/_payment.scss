@@ -1,0 +1,50 @@
+.box__payment{
+    width: 340px;
+    margin-bottom: 58px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.box__booking{
+    margin-right: auto;
+    margin-bottom: 16px;
+}
+
+.box__line{
+    width: 100vw;
+    height: 1px;
+    margin-bottom: 32px;
+    background-color: var(--line-gray);
+}
+
+.box_topay{
+    display: flex;
+    align-items: baseline;
+    margin-right: auto;
+    margin-bottom: 83px;
+}
+
+.payment__btn{
+    width: 40px;    
+    display: flex;
+    background-color: transparent;
+    color: var(--btn-close);
+}
+
+.payment__subtitle{
+    margin-right: 6px;
+    font-family: var(--title-font);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.44;
+    color: var(--accent);
+}
+
+.payment__text{
+    font-family: var(--primary-font);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--gray-text);
+    line-height: 1.15;
+}

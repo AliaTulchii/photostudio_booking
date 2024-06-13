@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Button from "../../Button/Button";
+import Button from "../../components/Button/Button";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 

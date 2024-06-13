@@ -13,14 +13,17 @@ const Location = () => {
         } else setShow(false)
     }
   return (
-      <div>
-          <button onClick={onShowClick} className='location__btn title'>Місцезнаходження {show === true ? <SlArrowUp className='location__arrow location__arrow--down'/> : <SlArrowDown className='location__arrow location__arrow--down'/>}</button>
+      <div className='location'>
+          <div>
+            <button onClick={onShowClick} className='location__btn title'>Місцезнаходження {show === true ? <SlArrowUp className='location__arrow location__arrow--down'/> : <SlArrowDown className='location__arrow location__arrow--down'/>}</button>
           {show && <motion.div
               initial={{ scale: 0}}
               animate={{ scale: 1}}
               exit={{ scale: 0}}
               transition={transition1}
               className='location__img--box'><img src={map} alt='map' className='location__img' /></motion.div>}
+          </div>
+          
     </div>
   )
 }

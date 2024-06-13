@@ -1,5 +1,5 @@
-import '../../../sass/components/_title.scss'
-import '../../../sass/components/_leftmodal.scss'
+import '../../sass/components/_title.scss'
+import '../../sass/components/_leftmodal.scss'
 
 const PublicOffer = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../sass/components/_modal.scss'
+import '../../sass/components/_modal.scss'
 
 
 const Rules = () => {

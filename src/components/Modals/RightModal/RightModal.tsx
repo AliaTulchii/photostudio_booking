@@ -1,19 +1,21 @@
 import React from 'react'
 import { AnimatePresence, motion, useDragControls, useMotionValue } from 'framer-motion'; 
-import BookingContent from './BookingContent';
+import BookingContent from '../../Booking/BookingContent';
 import { transition1 } from '../../../transitions/transitions';
+import '../../../sass/components/_modal.scss'
 
 interface BookingProps  {
     showBooked: boolean;
     closeModal: () => void;
+
 }
 
-const Feedback: React.FC<BookingProps> = ({showBooked,  closeModal}) => {
+const RightModal: React.FC<BookingProps> = ({showBooked,  closeModal}) => {
     const controls = useDragControls()
     const x = useMotionValue(0)
   
     return (
-        <div className='feedbackmodal__container container'>
+        <div className='rightmodal container'>
             <AnimatePresence>
                  {showBooked && <motion.div
               className='modal__overlay'
@@ -38,12 +40,13 @@ const Feedback: React.FC<BookingProps> = ({showBooked,  closeModal}) => {
       }
       
     }}
-    onClick={closeModal}
-                ><BookingContent/></motion.div>}
+    // onClick={closeModal}
+          ><BookingContent />
+          </motion.div>}
             </AnimatePresence>
          
     </div>
   )
 }
 
-export default Feedback
+export default RightModal
