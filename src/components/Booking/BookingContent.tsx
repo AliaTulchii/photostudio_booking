@@ -1,4 +1,4 @@
-import { format,  endOfMonth, startOfDay, addDays, isSameDay } from 'date-fns';
+import { format, startOfDay, addDays, isSameDay } from 'date-fns';
 import { uk } from 'date-fns/locale';
 import '../../sass/components/_modal.scss'
 import '../../sass/components/_booking.scss'
@@ -8,7 +8,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Slot from '../../components/Button/Slot';
 import DownModal from '../../components/Modals/DownModal/DownModal'
 import PaymentContent from './PaymentContent';
-import { RiArrowLeftWideFill } from "react-icons/ri";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 interface TimeSlot {
   start: string;
@@ -132,7 +132,7 @@ const generateAvailableHours = (hours: number, day: Date): TimeSlot[] => {
   return (
     <div className='modal__container rightmodal'>
       <button type='button' onClick={closeModal} className='modal__arrowback'>
-            <RiArrowLeftWideFill/>
+            <MdArrowBackIosNew/>
             </button>
       <ul className='modal__list booking__list'>
         {daysOfMonth.map(day => (

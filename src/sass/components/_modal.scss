@@ -22,9 +22,21 @@
     position: absolute;
     top: 5px;
     left: 0;
-    margin-right: auto;
+
     background-color: transparent;
     color: var(--btn-bg);
     z-index: 90;
     cursor: pointer;
 }
+
+.modal__arrowforward{
+    position: absolute;
+    top: 5px;
+    right: 0;
+
+    background-color: transparent;
+    color: var(--btn-bg);
+    z-index: 90;
+    cursor: pointer;
+}
+

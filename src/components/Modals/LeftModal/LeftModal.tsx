@@ -1,4 +1,4 @@
-import { motion,useDragControls, useMotionValue } from 'framer-motion';
+import { AnimatePresence, motion,useDragControls, useMotionValue } from 'framer-motion';
 import React from 'react'
 import Rules from '../../RulesOffers/Rules';
 import { transition1 } from '../../../transitions/transitions';
@@ -14,66 +14,37 @@ interface ModalProps {
   isOpen: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ showModalRules, showModalOffer, onBackdropClick,isOpen}) => {
+const Modal: React.FC<ModalProps> = ({ showModalRules, showModalOffer, onBackdropClick, isOpen}) => {
   const controls = useDragControls()
   const x = useMotionValue(0)
-  return isOpen ? (
+
+  return <AnimatePresence>{ isOpen ? (
+    
     <motion.div
     className='modal__overlay'
-                initial={{  x: '-100%' }}
-                animate={{  x: '0%' }}
-                  transition={transition1}
-                  drag="x"
-                  dragControls={controls}
-                  dragConstraints={{
-                    top: 0,
-                    left:0,
-                  }}
-                  dragElastic={{
-                    top: 0,
-                    left:1,
-                  }}
-                  style={{ x }}
-                  
+    initial={{ x: '-100%' }}
+      animate={{ x: '0%' }}
+      exit={{ x: '-100%' }}
+      transition={transition1}
+      drag="x"
+      dragControls={controls}
+      dragConstraints={{ left: 0 }}
+      dragElastic={{ left: 1 }}
+      style={{ x }}
       onDragEnd={() => {
-        if (x.get() >= 150) {
-          onBackdropClick()
+        if (x.get() <= -150) {
+          onBackdropClick();
         }
-        
       }}
       onClick={onBackdropClick}
     >
-      {showModalRules && <Rules />}
+      {showModalRules && <Rules onBackdropClick={onBackdropClick} />}
 
-      {showModalOffer && <PublicOffer />}
+      {showModalOffer && <PublicOffer onBackdropClick={onBackdropClick} />}
     </motion.div>
-  ) : null
+  ) : null}</AnimatePresence>
 }
 
 export default Modal
 
 
-// <motion.div
-//               className='modal__overlay'
-//             initial={{  x: '-100%' }}
-//             animate={{  x: '0%' }}
-//               transition={transition1}
-//               drag="x"
-//               dragControls={controls}
-//               dragConstraints={{
-//                 top: 0,
-//                 left:0,
-//               }}
-//               dragElastic={{
-//                 top: 0,
-//                 left:1,
-//               }}
-//               style={{ x }}
-//               onDragEnd={() => {
-//                 if (x.get() <= -50) {
-//                   closeModal()
-//                 }
-//               }
-//               }
-//               onClick={closeModal}
-//             ><PublicOffer /></motion.div>

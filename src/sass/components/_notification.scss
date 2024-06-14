@@ -1,0 +1,19 @@
+.notification{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    padding: 46px 55px;
+    // width: 250px;
+    // height: 120px;
+    background-color: var(--feedback);
+    text-align: center;
+    z-index: 90;
+}
+
+.notification__text{
+    font-family: var(--title-font);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.64;
+    color: var(--accent);
+}

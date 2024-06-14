@@ -1,9 +1,17 @@
 import '../../sass/components/_title.scss'
 import '../../sass/components/_leftmodal.scss'
+import { MdArrowForwardIos } from "react-icons/md";
 
-const PublicOffer = () => {
+interface PublicOfferProps {
+    onBackdropClick: () => void;
+}
+
+const PublicOffer: React.FC<PublicOfferProps> = ({onBackdropClick}) => {
   return (
-    <div className=' modal__container'>
+      <div className=' modal__container'>
+          <button type='button' onClick={onBackdropClick} className='modal__arrowforward'>
+            <MdArrowForwardIos/>
+            </button>
         <h1 className='modal__title title'>Договір публічної оферти</h1>
         <ul className='modal__list'>
               <li className='modal__item'>

@@ -1,10 +1,18 @@
 import React from 'react'
 import '../../sass/components/_modal.scss'
+import { MdArrowForwardIos } from "react-icons/md";
 
 
-const Rules = () => {
+interface RulesProps {
+  onBackdropClick: () => void;
+}
+
+const Rules: React.FC<RulesProps> = ({onBackdropClick}) => {
   return (
     <div className='modal__container '>
+      <button type='button' onClick={onBackdropClick} className='modal__arrowforward'>
+            <MdArrowForwardIos/>
+            </button>
       <h1 className='modal__title title'>Правила студії</h1>
       <ul className='modal__list'>
         <li className='modal__item'>

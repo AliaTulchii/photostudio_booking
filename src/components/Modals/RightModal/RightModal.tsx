@@ -21,27 +21,20 @@ const RightModal: React.FC<BookingProps> = ({showBooked,  closeModal, selectedHo
             <AnimatePresence>
                  {showBooked && <motion.div
               className='modal__overlay'
-              initial={{  x: '100%' }}
-              animate={{  x: '0%' }}
-                transition={transition1}
-                drag="x"
-                dragControls={controls}
-                dragConstraints={{
-                  top: 0,
-                  left:0,
-                }}
-                dragElastic={{
-                  top: 0,
-                  left:1,
-                }}
-                style={{ x }}
-                
-    onDragEnd={() => {
-      if (x.get() >= 150) {
-        closeModal()
-      }
-      
-    }}
+              initial={{ x: '100%' }}
+              animate={{ x: '0%' }}
+              exit={{ x: '100%' }}
+              transition={transition1}
+              drag="x"
+              dragControls={controls}
+              dragConstraints={{ right: 0 }}
+              dragElastic={{ right: 1 }}
+              style={{ x }}
+              onDragEnd={() => {
+                if (x.get() > 150) {
+                  closeModal();
+                }
+              }}
           >
             
             <BookingContent selectedHours={selectedHours} selectedPrice={selectedPrice} closeModal={closeModal} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
+import '../../sass/components/_notification.scss'
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 
@@ -9,15 +10,17 @@ interface FeedbackContentProps {
 }
 
 const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
-    const [form, setName] = useState({
+    const [form, setForm] = useState({
         name: '',
         feedback: '',
     });
     
+  const [showNotification, setShowNotification] = useState(false)
+
     const onChange = (e: any) => {
         const {value, name, feedback} = e.target
 
-        setName((state) => ({
+        setForm((state) => ({
             ...state,
             [name]: value,
             [feedback]: feedback,
@@ -25,7 +28,11 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
     }
 
     const showData = () => {
-        console.log("Form:", form)
+      console.log("Form:", form)
+      setShowNotification(true);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
     }
 
   return (
@@ -33,6 +40,8 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
       onClick={(e) => e.stopPropagation()}
       initial={{ y: "100%" }}
       animate={{ y: "0%" }}
+      exit={{ y: "100%" }}
+      transition={{ duration: 0.5 }}
       className="feedback__content container"
     >
       <button className="feedback__btn" onClick={closeModal}>
@@ -65,6 +74,11 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
           />
         </form>
       </div>
+      {showNotification && (
+        <div className="notification">
+          <p className="notification__text">Дякуємо за відгук!</p>
+        </div>
+      )}
     </motion.div>
   );
 };
