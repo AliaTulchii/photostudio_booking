@@ -2,6 +2,13 @@
     margin: 60px auto;
 }
 
+.start__downmodal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .start__title{
     margin-bottom: 10px;
 }

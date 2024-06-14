@@ -6,15 +6,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+   
 }
 
-// .rightmodal{
-//     overflow: hidden;
-//     // overflow-y: scroll;
-//   -webkit-overflow-scrolling: touch;
 
-//   &::-webkit-scrollbar {
-//     display: none; 
-//   }
-// }
+.rightmodal{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.modal__arrowback{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    margin-right: auto;
+    background-color: transparent;
+    color: var(--btn-bg);
+    z-index: 90;
+    cursor: pointer;
+}

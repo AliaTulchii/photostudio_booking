@@ -1,6 +1,6 @@
 .box__payment{
-    width: 340px;
-    margin-bottom: 58px;
+    width: 300px;
+    margin-bottom: 32px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -14,15 +14,15 @@
 .box__line{
     width: 100vw;
     height: 1px;
-    margin-bottom: 32px;
+    margin-bottom: 22px;
     background-color: var(--line-gray);
 }
 
-.box_topay{
+.box__topay{
     display: flex;
     align-items: baseline;
     margin-right: auto;
-    margin-bottom: 83px;
+    margin-bottom: 60px;
 }
 
 .payment__btn{

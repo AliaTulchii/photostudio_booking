@@ -1,78 +1,139 @@
-import { format,  endOfMonth, startOfDay, addDays } from 'date-fns';
+import { format,  endOfMonth, startOfDay, addDays, isSameDay } from 'date-fns';
 import { uk } from 'date-fns/locale';
 import '../../sass/components/_modal.scss'
 import '../../sass/components/_booking.scss'
-import '../../sass/components/_leftmodal.scss'
+// import '../../sass/components/_leftmodal.scss'
 import Button from '../../components/Button/Button'
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Slot from '../../components/Button/Slot';
 import DownModal from '../../components/Modals/DownModal/DownModal'
 import PaymentContent from './PaymentContent';
+import { RiArrowLeftWideFill } from "react-icons/ri";
 
 interface TimeSlot {
   start: string;
   end: string;
 }
 
-const BookingContent: React.FC = () => {
+interface HoursSlot {
+  selectedHours: number;
+  selectedPrice: number;
+  closeModal: () => void;
+}
+
+const BookingContent: React.FC<HoursSlot>= ({selectedHours, selectedPrice, closeModal}) => {
   const [daysOfMonth, setDaysOfMonth] = useState<Date[]>([]);
-  const [availableTimes, setAvailableTimes] = useState<Record<string, TimeSlot[]>>({})
-  const [showAllDays, setShowAllDays] = useState<boolean>(false);
+  const [availableTimes, setAvailableTimes] = useState<Record<string, TimeSlot[]>>({});
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
-  const [selectedData, setSelectedData] = useState<Date | null>(null)
-  const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null)
+  const [selectedData, setSelectedData] = useState<Date | null>(null);
+  const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
+  const [showLoadMore, setShowLoadMore] = useState<boolean>(true);
 
-  const initialDaysToShow = 7; 
+  const initialDaysToShow = 3; 
+
+const generateAvailableHours = (hours: number, day: Date): TimeSlot[] => {
+    const startHour = 9;
+    const endHour = 21;
+    const interval = hours;
+
+    const availableHours: TimeSlot[] = [];
+    const currentTime = new Date();
+
+    for (let i = startHour; i <= endHour - hours; i += interval) {
+      const slotStart = new Date(day);
+      slotStart.setHours(i, 0, 0, 0);
+
+      if (!isSameDay(currentTime, day) || slotStart > currentTime) {
+        const startHourFormatted = `${i < 10 ? '0' : ''}${i}:00`;
+        const endHourFormatted = `${i + hours < 10 ? '0' : ''}${i + hours}:00`;
+        availableHours.push({
+          start: startHourFormatted,
+          end: endHourFormatted,
+        });
+      }
+    }
+    return availableHours;
+  };
 
 
-  useEffect(() => {
+  const initialSetup = useMemo(() => {
     const currentDate = new Date();
     const startOfToday = startOfDay(currentDate);
-    const endOfCurrentMonth = endOfMonth(currentDate);
-    const allDays: Date[] = [startOfToday];
-    const daysToShow = showAllDays ? endOfCurrentMonth.getDate() : initialDaysToShow;
+    const initialDays: Date[] = [startOfToday];
 
-    const availableTimesObject: Record<string, TimeSlot[]> = {}
-
-
-    const availableHours: TimeSlot[] = Array.from({ length: 12}, (_, index) => ({
-      start: `${9 + index}:00`,
-      end: `${10 + index}:00`
-    }))
-
-    for (let i = 1; i < daysToShow; i++) {
-      allDays.push(addDays(allDays[allDays.length - 1], 1));
-      availableTimesObject[format(allDays[i], 'yyyy-MM-dd')] = availableHours;
+    for (let i = 1; i < initialDaysToShow; i++) {
+      initialDays.push(addDays(initialDays[i - 1], 1));
     }
 
-    setDaysOfMonth(allDays);
-    setAvailableTimes(availableTimesObject);
-  }, [showAllDays]);
+    const initialAvailableTimes: Record<string, TimeSlot[]> = {};
+    initialDays.forEach((day) => {
+      const availableHours: TimeSlot[] = generateAvailableHours(selectedHours, day);
+      initialAvailableTimes[format(day, 'yyyy-MM-dd')] = availableHours;
+    });
+
+    return { initialDays, initialAvailableTimes };
+  }, [selectedHours]);
+
+  useEffect(() => {
+    setDaysOfMonth(initialSetup.initialDays);
+    setAvailableTimes(initialSetup.initialAvailableTimes);
+  }, [initialSetup]);
+
+  
 
   const capitalizeFirstLetter = (string: string): string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+
   const handleLoadMore = () => {
-    setShowAllDays(true);
+    const newDays: Date[] = [];
+    const lastDay = daysOfMonth[daysOfMonth.length - 1];
+
+    for (let i = 1; i <= initialDaysToShow; i++) {
+      newDays.push(addDays(lastDay, i));
+    }
+
+    const newAvailableTimes = { ...availableTimes };
+
+    newDays.forEach((day) => {
+      const availableHours: TimeSlot[] = generateAvailableHours(selectedHours, day);
+      newAvailableTimes[format(day, 'yyyy-MM-dd')] = availableHours;
+    });
+
+    setDaysOfMonth((prevDays) => [...prevDays, ...newDays]);
+    setAvailableTimes(newAvailableTimes);
   };
 
   const handleBooking = (day: Date, slot: TimeSlot) => {
-    setSelectedData(day); 
-    setSelectedSlot(slot); 
-    setShowFeedback(true); 
+    if (
+      selectedData?.getTime() === day.getTime() &&
+      selectedSlot?.start === slot.start &&
+      selectedSlot?.end === slot.end
+    ) {
+      setSelectedData(null);
+      setSelectedSlot(null);
+      setShowLoadMore(true);
+    } else {
+      setSelectedData(day);
+      setSelectedSlot(slot);
+      setShowLoadMore(false);
+    }
   };
 
   const openModal = () => {
-    setShowFeedback(true)
-};
+    setShowFeedback(true);
+  };
 
-  const closeModal = () => {
+  const closeDownModal = () => {
     setShowFeedback(false);
   };
 
   return (
-    <div className='modal__container'>
+    <div className='modal__container rightmodal'>
+      <button type='button' onClick={closeModal} className='modal__arrowback'>
+            <RiArrowLeftWideFill/>
+            </button>
       <ul className='modal__list booking__list'>
         {daysOfMonth.map(day => (
           <li key={day.getTime()} className='modal__item'>
@@ -80,7 +141,10 @@ const BookingContent: React.FC = () => {
             <ul className="slots__list">
               {availableTimes[format(day, 'yyyy-MM-dd')]?.map((slot, index) => (
                 <li key={index} >
-                  <Slot text={`${slot.start}-${slot.end}`} onClick={() => handleBooking(day, slot)} className='slot'/>
+                  <Slot
+                    text={`${slot.start}-${slot.end}`}
+                    onClick={() => handleBooking(day, slot)}
+                    className={`slot ${selectedData?.getTime() === day.getTime() && selectedSlot?.start === slot.start && selectedSlot?.end === slot.end ? 'selected' : ''}`} />
                 </li>
               ))}
             </ul>
@@ -90,16 +154,23 @@ const BookingContent: React.FC = () => {
       <DownModal
         openModal={openModal}
       showFeedback={showFeedback}
-      closeModal={closeModal}
+      closeModal={closeDownModal}
       selectedData={selectedData}
         selectedSlot={selectedSlot}>
         <PaymentContent
-          closeModal={closeModal}
+          closeModal={closeDownModal}
           selectedData={selectedData}
-        selectedSlot={selectedSlot}/>
+          selectedSlot={selectedSlot}
+          selectedPrice={selectedPrice}
+        />
       </DownModal>
     
-      <Button type='button' className={'btn btn__feedback'} text={'Завантажити ще'} onClick={handleLoadMore} />
+      {showLoadMore ? (
+        <Button type='button' className={'btn btn__feedback'} text={'Завантажити ще'} onClick={handleLoadMore} />
+      ) : (
+          <Button type='button' className={'btn btn__booking'} text={'Забронювати'}  onClick={openModal}  />
+      )
+    }
     </div>
   )
 }

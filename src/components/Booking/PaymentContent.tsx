@@ -9,9 +9,10 @@ interface PaymentContentProps {
   closeModal: () => void;
   selectedData: any;
   selectedSlot: any;
+  selectedPrice: number;
 }
 
-const PaymentContent: React.FC<PaymentContentProps> = ({selectedData,selectedSlot, closeModal }) => {
+const PaymentContent: React.FC<PaymentContentProps> = ({selectedData,selectedSlot,selectedPrice, closeModal }) => {
     const [form, setName] = useState({
         name: '',
       number: '',
@@ -38,6 +39,8 @@ const PaymentContent: React.FC<PaymentContentProps> = ({selectedData,selectedSlo
       onClick={(e) => e.stopPropagation()}
       initial={{ y: "100%" }}
       animate={{ y: "0%" }}
+      exit={{ y: "100%" }}
+      transition={{ duration: 0.5 }}
       className="feedback__content container"
     >
       <div className="box__payment">
@@ -85,11 +88,11 @@ const PaymentContent: React.FC<PaymentContentProps> = ({selectedData,selectedSlo
             />
           </div>
 
-          <div className="box_topay">
+          <div className="box__topay">
           <h2 className="payment__subtitle">
       До сплати:
             </h2>
-            <p className="payment__text">0000.00</p>
+            <p className="payment__text">{selectedPrice} грн</p>
 
           </div>
 

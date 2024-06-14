@@ -4,13 +4,15 @@ import BookingContent from '../../Booking/BookingContent';
 import { transition1 } from '../../../transitions/transitions';
 import '../../../sass/components/_modal.scss'
 
+
 interface BookingProps  {
     showBooked: boolean;
-    closeModal: () => void;
-
+  closeModal: () => void;
+  selectedHours: number ;
+  selectedPrice: number;
 }
 
-const RightModal: React.FC<BookingProps> = ({showBooked,  closeModal}) => {
+const RightModal: React.FC<BookingProps> = ({showBooked,  closeModal, selectedHours, selectedPrice}) => {
     const controls = useDragControls()
     const x = useMotionValue(0)
   
@@ -40,8 +42,9 @@ const RightModal: React.FC<BookingProps> = ({showBooked,  closeModal}) => {
       }
       
     }}
-    // onClick={closeModal}
-          ><BookingContent />
+          >
+            
+            <BookingContent selectedHours={selectedHours} selectedPrice={selectedPrice} closeModal={closeModal} />
           </motion.div>}
             </AnimatePresence>
          
