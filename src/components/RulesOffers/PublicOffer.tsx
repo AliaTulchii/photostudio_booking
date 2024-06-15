@@ -12,7 +12,7 @@ const PublicOffer: React.FC<PublicOfferProps> = ({onBackdropClick}) => {
           <button type='button' onClick={onBackdropClick} className='modal__arrowforward'>
             <MdArrowForwardIos/>
             </button>
-        <h1 className='modal__title title'>Договір публічної оферти</h1>
+        <h1 className='modal__title  title '>Договір публічної оферти</h1>
         <ul className='modal__list'>
               <li className='modal__item'>
               <h2 className='modal__subtitle subtitle'>Загальні положення</h2>

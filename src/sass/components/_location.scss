@@ -1,4 +1,5 @@
 .location{
+    width: 97%;
     margin-bottom: 40px;
     display: flex;
     border-bottom: solid 1px var(--location-line);
@@ -17,7 +18,13 @@
     color: var(--btn-bg);
     margin-left: 90px;
 }
-.location__img{
-    width: 250px;
-    margin-bottom: 10px;
+// .location__img{
+//     width: 320px;
+//     margin-bottom: 10px;
+// }
+
+.location__img--box{
+display: flex;
+justify-content: center;
+align-items: center;
 }
