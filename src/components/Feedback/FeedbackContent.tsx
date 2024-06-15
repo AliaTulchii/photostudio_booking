@@ -4,6 +4,7 @@ import Button from "../../components/Button/Button";
 import '../../sass/components/_notification.scss'
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { transition1 } from "../../transitions/transitions";
 
 interface FeedbackContentProps {
   closeModal: () => void;
@@ -75,9 +76,15 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
         </form>
       </div>
       {showNotification && (
-        <div className="notification">
+        <motion.div
+        initial={{  opacity: 0 }}
+        animate={{  opacity: 1 }}
+        exit={{  opacity: 0 }}
+              transition={transition1}
+              style={{ overflow: 'hidden' }}
+          className="notification">
           <p className="notification__text">Дякуємо за відгук!</p>
-        </div>
+        </motion.div>
       )}
     </motion.div>
   );
