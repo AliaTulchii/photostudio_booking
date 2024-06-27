@@ -19,7 +19,7 @@ const RightModal: React.FC<BookingProps> = ({showBooked,  closeModal, selectedHo
     return (
         <div className='rightmodal container'>
             <AnimatePresence>
-                 {showBooked && <motion.div
+              {showBooked && <motion.div
               className='modal__overlay'
               initial={{ x: '100%' }}
               animate={{ x: '0%' }}

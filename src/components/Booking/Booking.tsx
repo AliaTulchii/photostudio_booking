@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../Button/Button";
 import RightModal from "../Modals/RightModal/RightModal";
 
@@ -23,8 +23,8 @@ const Booking = () => {
           <Button
             type="button"
             className={"btn btn__booking"}
-            text={"1 година  - 1000 грн"}
-            onClick={() => openModalBooked(1, 1000)}
+            text={"1 година  - 1 грн"}
+            onClick={() => openModalBooked(1, 1)}
           />
         </li>
         <li className="start__item">

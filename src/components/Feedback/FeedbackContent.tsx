@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
-import '../../sass/components/_notification.scss'
+import "../../sass/components/_notification.scss";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { transition1 } from "../../transitions/transitions";
@@ -11,30 +11,30 @@ interface FeedbackContentProps {
 }
 
 const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
-    const [form, setForm] = useState({
-        name: '',
-        feedback: '',
-    });
-    
-  const [showNotification, setShowNotification] = useState(false)
+  const [form, setForm] = useState({
+    name: "",
+    feedback: "",
+  });
 
-    const onChange = (e: any) => {
-        const {value, name, feedback} = e.target
+  const [showNotification, setShowNotification] = useState(false);
 
-        setForm((state) => ({
-            ...state,
-            [name]: value,
-            [feedback]: feedback,
-        }))
-    }
+  const onChange = (e: any) => {
+    const { value, name, feedback } = e.target;
 
-    const showData = () => {
-      console.log("Form:", form)
-      setShowNotification(true);
+    setForm((state) => ({
+      ...state,
+      [name]: value,
+      [feedback]: feedback,
+    }));
+  };
+
+  const showData = () => {
+    console.log("Form:", form);
+    setShowNotification(true);
     setTimeout(() => {
       setShowNotification(false);
     }, 3000);
-    }
+  };
 
   return (
     <motion.div
@@ -46,22 +46,22 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
       className="feedback__content container"
     >
       <button className="feedback__btn" onClick={closeModal}>
-      <IoClose className="feedback__close"/>
+        <IoClose className="feedback__close" />
       </button>
       <div className="feedback__formbox">
-        <form  action="" className="form">
+        <form action="" className="form">
           <div className="form__inputs">
             <input
-                          name="name"
-                          value={form.name}
-                          onChange={onChange}
+              name="name"
+              value={form.name}
+              onChange={onChange}
               placeholder="Ваше ім’я"
               className="form__input form__name"
             />
             <textarea
-                          name="feedback"
-                          value={form.feedback}
-                          onChange={onChange}
+              name="feedback"
+              value={form.feedback}
+              onChange={onChange}
               placeholder="Ваш відгук"
               className="form__input form__textarea"
             />
@@ -77,12 +77,13 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
       </div>
       {showNotification && (
         <motion.div
-        initial={{  opacity: 0 }}
-        animate={{  opacity: 1 }}
-        exit={{  opacity: 0 }}
-              transition={transition1}
-              style={{ overflow: 'hidden' }}
-          className="notification">
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={transition1}
+          style={{ overflow: "hidden" }}
+          className="notification"
+        >
           <p className="notification__text">Дякуємо за відгук!</p>
         </motion.div>
       )}

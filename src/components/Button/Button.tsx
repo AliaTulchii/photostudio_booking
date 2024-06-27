@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../sass/components/_button.scss'
 type Btn = {
   text: string;
@@ -7,7 +6,7 @@ type Btn = {
   type: string;
 }
 
-const Button = ({ text,  onClick, className, type}: Btn) => {
+const Button = ({ text,  onClick, className}: Btn) => {
 
   return (
       <button  type='button' className={className} onClick={onClick}>      

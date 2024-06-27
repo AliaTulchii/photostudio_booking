@@ -24,4 +24,8 @@
         background: var(--btn-bg);
         color: var(--primary-text);
     }
+
+    &.booked{
+        background-color: var(--disabled);
+    }
 }
