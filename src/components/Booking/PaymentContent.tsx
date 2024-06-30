@@ -156,8 +156,8 @@ import { motion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import "../../sass/components/_payment.scss";
 import axios from "axios";
+import { format } from "date-fns";
 import { toDate } from "date-fns-tz";
-
 
 interface PaymentContentProps {
   closeModal: () => void;
@@ -165,11 +165,6 @@ interface PaymentContentProps {
   selectedSlot: { start: string; end: string } | null;
   selectedPrice: number;
 }
-
-// interface TimeSlot {
-//   start: string;
-//   end: string;
-// }
 
 const PaymentContent: React.FC<PaymentContentProps> = ({
   selectedData,
@@ -199,14 +194,17 @@ const PaymentContent: React.FC<PaymentContentProps> = ({
       return;
     }
 
-    const timeZone = "Europe/Kiev"; // Ваша часова зона
-    const localDate = new Date(
-      `${selectedData.toISOString().split("T")[0]}T${selectedSlot.start}:00`
+    const timeZone = "Europe/Kiev";
+    const selectedStartDate = new Date(
+      `${format(selectedData, "yyyy-MM-dd")}T${selectedSlot.start}:00`
     );
-    const zonedDate = toDate(localDate, { timeZone });
-  
-    // Переводимо дату в ISO формат для відправки на сервер
-    const bookingDate = zonedDate.toISOString(); 
+
+    const zonedDate = toDate(selectedStartDate, { timeZone });
+    const bookingDate = zonedDate.toISOString();
+
+    console.log("Selected start date:", selectedStartDate);
+    console.log("Zoned date:", zonedDate);
+    console.log("Booking date (ISO):", bookingDate);
 
     try {
       console.log("Submitting form...");
@@ -255,7 +253,6 @@ const PaymentContent: React.FC<PaymentContentProps> = ({
       console.error("Error submitting the form", error);
     }
   };
-
   return (
     <motion.div
       onClick={(e) => e.stopPropagation()}
