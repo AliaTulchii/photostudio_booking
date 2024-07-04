@@ -218,7 +218,8 @@ const BookingContent: React.FC<HoursSlot> = ({
             <p className="booking__title">
               {capitalizeFirstLetter(format(day, "EEEE, d MMMM", { locale: uk }))}
             </p>
-            <ul className="slots__list">
+            
+              <ul className="slots__list">
               {availableTimes[format(day, "yyyy-MM-dd")]?.map((slot, index) => {
                 const isBooked = bookedDates[format(day, "yyyy-MM-dd")]?.some(
                   (bookedSlot) =>
@@ -245,6 +246,8 @@ const BookingContent: React.FC<HoursSlot> = ({
                 );
               })}
             </ul>
+            
+            
           </li>
         ))}
       </ul>

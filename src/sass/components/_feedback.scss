@@ -1,5 +1,6 @@
 
 .feedback__container{
+    
 position: fixed;
 display: flex;
 justify-content: center;
@@ -25,6 +26,7 @@ z-index: 50;
     bottom: 0;
     height: 75vh;
     width: 100%;
+    // max-width: 425px;
     overflow: hidden;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
