@@ -201,6 +201,12 @@ const BookingContent: React.FC<HoursSlot> = ({
     setShowFeedback(false);
   };
 
+  const checkOverlap = (slot1: TimeSlot, slot2: TimeSlot): boolean => {
+    const [start1, end1] = [slot1.start, slot1.end].map((time) => new Date(`1970-01-01T${time}:00Z`));
+    const [start2, end2] = [slot2.start, slot2.end].map((time) => new Date(`1970-01-01T${time}:00Z`));
+    return start1 < end2 && start2 < end1;
+  };
+
   return (
     <div className="modal__container rightmodal">
       <button type="button" onClick={closeModal} className="modal__arrowback">
@@ -217,6 +223,8 @@ const BookingContent: React.FC<HoursSlot> = ({
                 const isBooked = bookedDates[format(day, "yyyy-MM-dd")]?.some(
                   (bookedSlot) =>
                     bookedSlot.start === slot.start && bookedSlot.end === slot.end
+                ) || bookedDates[format(day, "yyyy-MM-dd")]?.some(
+                  (bookedSlot) => checkOverlap(bookedSlot, slot)
                 );
 
                 return (
