@@ -59,14 +59,17 @@ const PaymentContent: React.FC<PaymentContentProps> = ({
         console.log("Form data:", values);
         console.log("Selected data:", selectedData);
         console.log("Selected slot:", selectedSlot);
+        console.log("Selected price:", selectedPrice);
+
         const response = await axios.post(
-          `https://art-studio-api.onrender.com/api/bookings/book?price=1`,
+          `https://art-studio-api.onrender.com/api/bookings/book?price=${selectedPrice}`,
           {
             name: values.name,
             number: values.number,
             email: values.email,
             bookingDate,
             bookingHours: selectedHours.toString(),
+            productPrice: selectedPrice
           }
         );
 

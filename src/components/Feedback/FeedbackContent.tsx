@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Button from "../../components/Button/Button";
 import "../../sass/components/_notification.scss";
-import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { transition1 } from "../../transitions/transitions";
+import axios from "axios";
 
 interface FeedbackContentProps {
   closeModal: () => void;
@@ -18,22 +17,34 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
 
   const [showNotification, setShowNotification] = useState(false);
 
-  const onChange = (e: any) => {
-    const { value, name, feedback } = e.target;
-
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { value, name } = e.target;
     setForm((state) => ({
       ...state,
       [name]: value,
-      [feedback]: feedback,
     }));
   };
 
-  const showData = () => {
+  const showData = async () => {
     console.log("Form:", form);
-    setShowNotification(true);
-    setTimeout(() => {
-      setShowNotification(false);
-    }, 3000);
+
+    try {
+      const response = await axios.post("https://art-studio-tg-admin-bot.onrender.com/send-message", {
+        message: `Відгук від\n${form.name}:\n${form.feedback}`
+      });
+
+      console.log("Response:", response);
+      setForm({
+        name: "",
+        feedback:""
+      })
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 1000);
+    } catch (error) {
+      console.error("Error sending feedback:", error);
+    }
   };
 
   return (
@@ -49,7 +60,14 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
         <IoClose className="feedback__close" />
       </button>
       <div className="feedback__formbox">
-        <form action="" className="form">
+        <form
+          action=""
+          className="form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            showData();
+          }}
+        >
           <div className="form__inputs">
             <input
               name="name"
@@ -67,12 +85,12 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
             />
           </div>
 
-          <Button
+          
+          <button
             type="submit"
-            text="Надіслати відгук"
-            onClick={showData}
-            className="btn btn__booking btn__form"
-          />
+            className="btn btn__booking btn__form">
+            Надіслати відгук
+          </button>
         </form>
       </div>
       {showNotification && (
