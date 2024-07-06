@@ -11,7 +11,7 @@ const Location = () => {
   };
   return (
     <div className="location">
-      <div>
+      
         <button onClick={onShowClick} className="location__btn title ">
           Місцезнаходження{" "}
           {show ? (
@@ -42,7 +42,7 @@ const Location = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+     
     </div>
   );
 };
