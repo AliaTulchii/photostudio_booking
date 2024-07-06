@@ -23,40 +23,40 @@ const Booking = () => {
           <Button
             type="button"
             className={"btn btn__booking"}
-            text={"1 година  - 3 грн"}
-            onClick={() => openModalBooked(1, 3)}
+            text={"1 година  - 1 грн"}
+            onClick={() => openModalBooked(1, 1)}
           />
         </li>
         <li className="start__item">
           <Button
             type="button"
             className={"btn btn__booking"}
-            text={"2 години  - 1600 грн"}
-            onClick={() => openModalBooked(2, 1600)}
+            text={"2 години  - 2 грн"}
+            onClick={() => openModalBooked(2, 2)}
           />
         </li>
         <li className="start__item">
           <Button
             type="button"
             className={"btn btn__booking"}
-            text={"3 години  - 2400 грн"}
-            onClick={() => openModalBooked(3, 2400)}
+            text={"3 години  - 3 грн"}
+            onClick={() => openModalBooked(3, 3)}
           />
         </li>
         <li className="start__item">
           <Button
             type="button"
             className={"btn btn__booking"}
-            text={"4 години  - 3200 грн"}
-            onClick={() => openModalBooked(4, 3200)}
+            text={"4 години  - 4 грн"}
+            onClick={() => openModalBooked(4, 4)}
           />
         </li>
         <li className="start__item">
           <Button
             type="button"
             className={"btn btn__booking"}
-            text={"5 годин  - 4000 грн"}
-            onClick={() => openModalBooked(5, 4000)}
+            text={"5 годин  - 5 грн"}
+            onClick={() => openModalBooked(5, 5)}
           />
         </li>
       </ul>
