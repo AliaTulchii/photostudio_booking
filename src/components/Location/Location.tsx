@@ -12,7 +12,7 @@ const Location = () => {
   return (
     <div className="location">
       <div>
-        <button onClick={onShowClick} className="location__btn title">
+        <button onClick={onShowClick} className="location__btn title ">
           Місцезнаходження{" "}
           {show ? (
             <SlArrowUp className="location__arrow location__arrow--down" />
