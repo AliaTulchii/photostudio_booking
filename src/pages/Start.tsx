@@ -12,7 +12,7 @@ const Start= () => {
 
     return (
       <div className='start container'>
-        <h1 className='start__title title'>Бронювання</h1>
+        <h1 className='start__title title container'>Бронювання</h1>
         <Booking/>        
         <Location />
         <RulesOffers />
