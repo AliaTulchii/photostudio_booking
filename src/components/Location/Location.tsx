@@ -11,15 +11,19 @@ const Location = () => {
   };
   return (
     <div className="location">
-      
-        <button onClick={onShowClick} className="location__btn title ">
-          Місцезнаходження{" "}
+      <div>
+        <div className="location__btnbox" onClick={onShowClick}>
+           <button  className="location__btn title ">
+          Місцезнаходження
+        </button>
           {show ? (
             <SlArrowUp className="location__arrow location__arrow--down" />
           ) : (
             <SlArrowDown className="location__arrow location__arrow--down" />
           )}
-        </button>
+        </div>
+       
+        
         <AnimatePresence>
           {show && (
             <motion.div
@@ -42,7 +46,7 @@ const Location = () => {
             </motion.div>
           )}
         </AnimatePresence>
-     
+      </div>
     </div>
   );
 };

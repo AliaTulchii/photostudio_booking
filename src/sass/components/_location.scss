@@ -2,13 +2,19 @@
     width: 300px;
     margin-bottom: 40px;
     display: flex;
-    flex-direction: column;
     border-bottom: solid 1px var(--location-line);
+}
+
+.location__btnbox{
+    width: 300px;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 .location__btn{
     display: flex;
-    align-items: center;
+    // align-items: center;
     background: transparent;
     margin-bottom: 10px;
     // text-align: center;
@@ -17,7 +23,7 @@
 .location__arrow{
     width: 25px;
     color: var(--btn-bg);
-    margin-left: 60px;
+    // margin-left: 60px;
 }
 // .location__img{
 //     width: 320px;
