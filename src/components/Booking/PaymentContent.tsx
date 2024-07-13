@@ -62,7 +62,7 @@ const PaymentContent: React.FC<PaymentContentProps> = ({
         console.log("Selected price:", selectedPrice);
 
         const response = await axios.post(
-          `https://art-studio-api.onrender.com/api/bookings/book?price=${selectedPrice}`,
+          `https://art-studio-api-production.up.railway.app/api/bookings/book?price=${selectedPrice}`,
           {
             name: values.name,
             number: values.number,
@@ -72,6 +72,7 @@ const PaymentContent: React.FC<PaymentContentProps> = ({
             productPrice: selectedPrice
           }
         );
+        console.log(response);
 
         const booking = response.data.booking;
         const bookingId = booking._id;
@@ -82,14 +83,14 @@ const PaymentContent: React.FC<PaymentContentProps> = ({
         setTimeout(async () => {
           console.log("Fetching payment URL...");
           const paymentResponse = await axios.get(
-            `https://art-studio-api.onrender.com/api/payments/payment-form?currency=UAH&productName[]=photosession&productCount[]=1&bookingId=${bookingId}`
+            `https://art-studio-api-production.up.railway.app/api/payments/payment-form?currency=UAH&productName[]=photosession&productCount[]=1&bookingId=${bookingId}`
           );
 
           console.log("Payment request status:", paymentResponse.status);
           console.log("Payment request response:", paymentResponse.data);
 
           if (paymentResponse.status === 200) {
-            window.location.href = `https://art-studio-api.onrender.com/api/payments/payment-form?currency=UAH&productName[]=photosession&productCount[]=1&bookingId=${bookingId}`;
+            window.location.href = `https://art-studio-api-production.up.railway.app/api/payments/payment-form?currency=UAH&productName[]=photosession&productCount[]=1&bookingId=${bookingId}`;
           } else {
             console.error("Error in payment request:", paymentResponse.data);
           }

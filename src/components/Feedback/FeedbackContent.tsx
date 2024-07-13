@@ -29,7 +29,7 @@ const FeedbackContent: React.FC<FeedbackContentProps> = ({ closeModal }) => {
     console.log("Form:", form);
 
     try {
-      const response = await axios.post("https://art-studio-tg-admin-bot.onrender.com/send-message", {
+      const response = await axios.post("https://art-studio-tg-admin-bot-production.up.railway.app/send-message", {
         message: `Відгук від\n${form.name}:\n${form.feedback}`
       });
 

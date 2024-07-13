@@ -41,7 +41,7 @@ const BookingContent: React.FC<HoursSlot> = ({
   useEffect(() => {
     const fetchBookedDates = async () => {
       try {
-        const response = await axios.get("https://art-studio-api.onrender.com/api/bookings/all");
+        const response = await axios.get("https://art-studio-api-production.up.railway.app/api/bookings/all");
         const approvedBookings = response.data.filter((booking: any) => {
           return (
             booking.bookingDate &&
