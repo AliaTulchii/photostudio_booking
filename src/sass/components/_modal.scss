@@ -68,6 +68,10 @@
 gap: 24px;
 }
 
+.modal__list{
+    margin-bottom: 24px;
+}
+
 
 .modal__text{
     font-family: var(--primary-font);
@@ -85,4 +89,15 @@ gap: 24px;
         line-height: 1.19;
         color: var(--accent);
     }
+
+    &--remark{
+        margin-right: 10px;
+        font-family: var(--title-font);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.19;
+        color: var(--accent);
+    }
 }
+
+

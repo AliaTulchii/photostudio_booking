@@ -36,13 +36,18 @@ const Location = () => {
             >
               <iframe
                 title="Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2643.5219867974047!2d35.073501199999995!3d48.5040575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d959826027371b%3A0x4008234a3659c56b!2z0KTQvtGC0L7RgdGC0YPQtNGW0Y8gRm90b3ggU3R1ZGlv!5e0!3m2!1sru!2sua!4v1718385080169!5m2!1sru!2sua"
+                src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE,%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%A2%D1%80%D0%BE%D1%97%D1%86%D1%8C%D0%BA%D0%B0%2021-%D0%B3+(Focus%20Photolab)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                 width="290"
                 height="250"
                 style={{ border: "solid 1px #C2B5A4", borderRadius: "8px", marginBottom: "5px" }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
+            <p className="modal__text">
+            <span className="modal__text--accent">Адреса:</span>
+            Дніпро, вулиця Троїцька 21-г, офіс 504
+          </p>
+
             </motion.div>
           )}
         </AnimatePresence>
