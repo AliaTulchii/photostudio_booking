@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import LeftModal from "../Modals/LeftModal/LeftModal";
 import "../../sass/components/_modal.scss";
-import LinkBtn from "../Button/LinkBtn";
+
 
 const RulesOffers = () => {
   const [showModalRules, setShowModalRules] = useState(false);
@@ -35,7 +35,6 @@ const RulesOffers = () => {
         text={"Договір публічної оферти"}
         onClick={openModalOffer}
       />
-      <LinkBtn className={"btn__modal title"}/>
       <LeftModal
         isOpen={showModalRules || showModalOffer}
         showModalRules={showModalRules}
